@@ -1,6 +1,6 @@
 'use strict'
 
-var knex = require('.knex')
+var knex = require('./knex')
 
 module.exports = {
   getAllUsers(){
@@ -27,10 +27,9 @@ module.exports = {
   getAllPosts(){
     return knex('posts')
     .join('users', 'posts.user_id', 'users_id')
-    .select('posts.id as postId'), 'users.id as userId', 'users.image_url as userImage', 'users.first_name as firstName', 'users.last_name as lastName', 'posts.title as title', 'posts.body as postBody')
+    .select('posts.id as postId', 'users.id as userId', 'users.image_url as userImage', 'users.first_name as firstName', 'users.last_name as lastName', 'posts.title as title', 'posts.body as postBody')
   },
   getPost(){
-    return knex('posts'){
       return knex('posts').insert(post)
     },
   // updatePost
@@ -44,6 +43,5 @@ module.exports = {
     .join('posts', 'posts.id', 'comments.post_id')
     .join('users', 'users.id', 'comments.user_id')
     .select('users.first_name as firstName', 'users.last_name as lastName', 'posts.title as title', 'comments.body as commentBody')
-  }
   }
 }
