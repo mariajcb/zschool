@@ -1,8 +1,8 @@
 <div class="container">
   {{#each users}}
-  <div>
+  <div class="center-align">
     <h4><a href="/users/{{this.id}}">{{this.first_name}} {{this.last_name}}</a></h4>
-    <img class="user-image circle" src="{{this.image_url}}" alt="{{this.first_name}} {{this.last_name}}" />
+    <img class="user-image" src="{{this.image_url}}" alt="{{this.first_name}} {{this.last_name}}" />
     <p>{{this.bio}}</p>
   </div>
   {{/each}}

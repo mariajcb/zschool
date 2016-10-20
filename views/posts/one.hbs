@@ -1,0 +1,31 @@
+
+<div class="container container-custom">
+  <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large blue">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red darken-1 btn-delete-post"><i class="material-icons">delete</i></a></li>
+      <li><a href="/posts/{{post.postId}}/edit" class="btn-floating yellow darken-1 btn-edit-post"><i class="material-icons">mode_edit</i></a></li>
+    </ul>
+  </div>
+
+  <img class="post-image" src="{{post.postImage}}" alt="{{post.title}}" />
+  <p>By {{post.firstName}} {{post.lastName}}</p>
+  <p>{{post.postBody}}</p>
+
+  <h4>Leave a Comment</h4>
+
+  <form action="/{{post.id}}/comments/new" method="post">
+    <div class="input-field col s12">
+      <select name="user_id" required>
+        <option disabled selected>Choose a Commenter</option>
+        {{#each users}}
+        <option value={{this.id}}>{{this.first_name}} {{this.last_name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <textarea name="body" rows="8" cols="40"></textarea>
+    <button class="waves-effect waves-light btn">Submit</button>
+  </form>
+</div>

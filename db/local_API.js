@@ -27,10 +27,19 @@ module.exports = {
   getAllPosts(){
     return knex('posts')
     .join('users', 'posts.user_id', 'users_id')
-    .select('posts.id as postId', 'users.id as userId', 'users.image_url as userImage', 'users.first_name as firstName', 'users.last_name as lastName', 'posts.title as title', 'posts.body as postBody')
+    .select('posts.id as postId', 'users.id as userId',
+    'users.image_url as userImage', 'users.first_name as firstName',
+    'users.last_name as lastName', 'posts.title as title', 'posts.body as postBody')
   },
-  getPost(){
-      return knex('posts').insert(post)
+  getPost(id){
+  return knex('posts')
+  .join('users', 'posts.user_id', 'users.id')
+  .select('posts.id as postId', 'users.id as userId', 'users.image_url as userImage', 'users.first_name as firstName', 'users.last_name as lastName', 'posts.title as title', 'posts.body as postBody')
+  .where('posts.id', id.toString()).first()
+  },
+  createPost(){
+      return knex('posts')
+      .insert(post)
     },
   // updatePost
   deletePost(id){

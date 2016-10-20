@@ -1,0 +1,8 @@
+{{#each posts}}
+  <div class=post-container>
+    <h4><a href="/posts/{{this.postId}}">{{this.title}}</a></h4>
+    <p>By: {{this.firstName}} {{this.lastName}}</p>
+    <p>{{this.created_on}}</p>
+    <p>{{this.postBody}}</p>
+  </div>
+{{/each}}
