@@ -1,5 +1,15 @@
 <div class="container">
+    <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large blue">
+            <i class="large material-icons">mode_edit</i>
+        </a>
+        <ul>
+            <li><a href="/users/{{user.id}}/delete" a class="btn-floating red darken-1 btn-delete-user"><i class="material-icons">delete</i></a></li>
+            <li><a href="/users/{{user.id}}/edit" class="btn-floating yellow darken-1 btn-edit-user"><i class="material-icons">mode_edit</i></a></li>
+        </ul>
+    </div>
+
+<div class="container">
   <img class="user-image" src="{{user.image_url}}" alt="{{user.first_name}} + {{user.last_name}}" />
   <h2>{{user.first_name}} {{user.last_name}}</h2>
-  <p>{{user.bio}}</p>
 </div>

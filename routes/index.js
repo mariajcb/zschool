@@ -4,7 +4,7 @@ var users = require('./users')
 var posts = require('./posts')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   res.render('index', { title: 'Zschool: Survival Blog' });
 });
 

@@ -15,10 +15,19 @@ module.exports = {
         return knex('users')
             .insert(user)
     },
-    updateUser(id, user) {
+    updateUser(id, newUser) {
         return knex('users')
-            .update(user)
-            .where('posts.id', id)
+            .select()
+            .where('users.id', id)
+            .first()
+            .then((user) => {
+              return knex('users')
+              .update({
+                first_name: newUser.first_name || user.first_name,
+                last_name: newUser.last_name || user.last_name,
+                image_url: newUser.image_url || user.image_url
+              })
+            })
     },
     deleteUser(id) {
         return knex('users')
@@ -43,7 +52,6 @@ module.exports = {
                         })
                         .returning(['id', 'first_name', 'last_name', 'email', 'image_url'])
                         .then((user) => {
-                            console.log('user after insertion=======', user);
                             cb2(null, user);
                         })
                 }
@@ -66,7 +74,7 @@ module.exports = {
         return knex('posts')
             .insert(post)
     },
-    updateOPost(id, newPost) {
+    updatePost(id, newPost) {
         return knex('posts')
             .select()
             .where('id', id)
