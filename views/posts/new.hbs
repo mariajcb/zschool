@@ -1,0 +1,28 @@
+<div class="container">
+  <form name="new-post-form" action="/posts" method="post">
+    <div class="row">
+      <div class="input-field col s12">
+        <select required>
+          <option disabled selected>Choose an Author</option>
+          {{#each users}}
+          <option>{{this.first_name}} {{this.last_name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      </div>
+      <div class="input-field col s12">
+        <label for="title">Title</label>
+        <input class="input-field col s12" name="title" type="text" required>
+      </div>
+      <div class="input-field col s12">
+        <label for="image_url">Image Url</label>
+        <input name="image_url" type="text" required>
+      </div>
+      <div class="input-field col s12">
+        <label for="body">Body</label>
+        <textarea name="body" class="materialize-textarea" required></textarea>
+      </div>
+      <button type="submit" class="waves-effect waves-light btn-large">Submit</button>
+    </div>
+  </form>
+</div>

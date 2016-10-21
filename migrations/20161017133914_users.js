@@ -6,7 +6,8 @@ exports.up = function(knex) {
     table.string('first_name').notNullable().defaultTo('')
     table.string('last_name')
     table.string('image_url')
-    table.timestamps()
+    table.string('email')
+    table.timestamps(true,true)
   })
 }
 
